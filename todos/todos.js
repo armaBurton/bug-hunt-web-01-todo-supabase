@@ -21,7 +21,6 @@ todoForm.addEventListener('submit', async(e) => {
     const formData = new FormData(todoForm);
 
     const todo = formData.get('todo');
-
     await createTodo(todo);
 
     todoForm.reset();
@@ -30,12 +29,12 @@ todoForm.addEventListener('submit', async(e) => {
 
 async function displayTodos() {
     const todos = await getTodos();
-    
+    console.log(todos);
     todosEl.textContent = '';
 
     for (let todo of todos) {
+        console.log(todo);
         const todoEl = renderTodo(todo);
-
         todoEl.addEventListener('click', async() => {
             await completeTodo(todo.id);
 
